@@ -425,12 +425,11 @@
 			"Type": "AWS::EC2::Instance",
 			"Properties": {
 				"InstanceType": "t2.micro",
-				"ImageId": "ami-79fd7eee",
+				"ImageId": "ami-031a3db8bacbcdc20",
 				"KeyName": {
 					"Ref": "KeyName"
 				},
 				"SubnetId": {"Ref": "myPublicSubnet1"},
-				"SecurityGroups": ["mySecurityGroup"],
 				"BlockDeviceMappings": [{
 						"DeviceName": "/dev/sdm",
 						"Ebs": {
@@ -450,12 +449,11 @@
 			"Type": "AWS::EC2::Instance",
 			"Properties": {
 				"InstanceType": "t2.micro",
-				"ImageId": "ami-79fd7eee",
+				"ImageId": "ami-031a3db8bacbcdc20",
 				"KeyName": {
 					"Ref": "KeyName"
 				},
 				"SubnetId": {"Ref": "myPrivateSubnet1"},
-				"SecurityGroups": ["mySecurityGroup"],
 				"BlockDeviceMappings": [{
 						"DeviceName": "/dev/sdm",
 						"Ebs": {
