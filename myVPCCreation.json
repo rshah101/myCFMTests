@@ -173,7 +173,9 @@
 		"myVPC": {
 			"Type": "AWS::EC2::VPC",
 			"Properties": {
-				"CidrBlock": "10.0.0.0/16"
+				"CidrBlock": "10.0.0.0/16",
+        "EnableDnsSupport" : "true",
+    	    "EnableDnsHostnames" : "true"
 			},
 			"Metadata": {
 				"AWS::CloudFormation::Designer": {
@@ -188,7 +190,8 @@
 					"Ref": "myVPC"
 				},
 				"CidrBlock": "10.0.1.0/24",
-				"AvailabilityZone": "eu-west-1a"
+				"AvailabilityZone": "eu-west-1a",
+        "MapPublicIpOnLaunch": "true"
 			},
 			"Metadata": {
 				"AWS::CloudFormation::Designer": {
@@ -203,7 +206,8 @@
 					"Ref": "myVPC"
 				},
 				"CidrBlock": "10.0.2.0/24",
-				"AvailabilityZone": "eu-west-1b"
+				"AvailabilityZone": "eu-west-1b",
+        "MapPublicIpOnLaunch": "true"
 			},
 			"Metadata": {
 				"AWS::CloudFormation::Designer": {
@@ -218,7 +222,8 @@
 					"Ref": "myVPC"
 				},
 				"CidrBlock": "10.0.3.0/24",
-				"AvailabilityZone": "eu-west-1c"
+				"AvailabilityZone": "eu-west-1c",
+        "MapPublicIpOnLaunch": "true"
 			},
 			"Metadata": {
 				"AWS::CloudFormation::Designer": {
@@ -400,6 +405,17 @@
 					"From": "22",
 					"To": "22"
 				}
+			}
+		},
+    "myRouteEntry1": {
+			"Type": "AWS::EC2::Route",
+      "DependsOn" : "myIGW",
+			"Properties": {
+				"RouteTableId": {
+					"Ref": "myRouteTable"
+				},
+				"DestinationCidrBlock": "0.0.9.0/0",
+				"GatewayId": { "Ref" : "myIGW" }
 			}
 		},
 		"mySecurityGroup": {
